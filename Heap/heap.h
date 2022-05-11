@@ -38,7 +38,7 @@ typedef struct heap_t heap_t;
  *   - size: (optional) If an existing buffer is given, the size of that buffer.
  *       else, the size to initialize the heap with.
  */
-heap_t *alloc_heap(comparator compare, void *data, int size);
+heap_t *alloc_heap(comparator compare, void **data, int size);
 
 /*
  * Free the given heap

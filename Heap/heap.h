@@ -49,6 +49,17 @@ void free_heap(heap_t *heap);
  * MEMBER FUNCTIONS *
  ********************/
 
+/*
+ * Return a pointer to the smallest item in the heap w/o removing it.
+ */
 void *peek_min(heap_t *heap);
+
+/*
+ * Return a pointer to the smallest item in the heap and remove it.
+ */
 void *pop_min(heap_t *heap);
+
+/*
+ * Add the given item to the heap.
+ */
 void push(heap_t *heap, const void *item);

@@ -27,7 +27,22 @@ typedef struct heap_t heap_t;
  * ALLOCATORS/DEALLOCATORS *
  ***************************/
 
+/*
+ * Allocate a new heap.
+ *
+ * Input:
+ *   - compare: function used to compare items within the heap.
+ *   - data: (optional) Pointer to an existing buffer. The data in that buffer
+ *       is used to initialize the heap & the heap takes ownership over the
+ *       buffer. If not null, the size of the buffer must also be given.
+ *   - size: (optional) If an existing buffer is given, the size of that buffer.
+ *       else, the size to initialize the heap with.
+ */
 heap_t *alloc_heap(comparator compare, void *data, int size);
+
+/*
+ * Free the given heap
+ */
 void free_heap(heap_t *heap);
 
 /********************

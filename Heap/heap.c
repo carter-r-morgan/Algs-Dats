@@ -25,7 +25,15 @@ void heapify(heap_t *heap) {
 }
 
 void resize(heap_t *heap) {
+  int new_buf_size = heap->buffer_size * RESIZE_FACTOR;
+  void **data = malloc(new_buf_size * sizeof(void*));
 
+  for (int i = 0; i < heap->buffer_size; i++)
+    data[i] = heap->data[i];
+
+  free(heap->data);
+  heap->buffer_size = new_buf_size;
+  heap->data = data;
 }
 
 void bubble(heap_t *heap, int index) {

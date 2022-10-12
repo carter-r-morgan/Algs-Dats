@@ -80,7 +80,9 @@ void free_heap(heap_t *heap) {
 /*
  * Return a pointer to the smallest item in the heap w/o removing it.
  */
-void *peek_min(heap_t *heap);
+void *peek_min(heap_t *heap) {
+  return heap->data[0];
+}
 
 /*
  * Return a pointer to the smallest item in the heap and remove it.

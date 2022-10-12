@@ -20,10 +20,6 @@ struct heap_t {
 #define PARENT(i) ((i - 1) / BRANCH_FACTOR)
 #define CHILD(i, n) (i*BRANCH_FACTOR + 1 + n)
 
-void heapify(heap_t *heap) {
-
-}
-
 void resize(heap_t *heap) {
   int new_buf_size = heap->buffer_size * RESIZE_FACTOR;
   void **data = malloc(new_buf_size * sizeof(void*));
@@ -50,7 +46,7 @@ void bubble(heap_t *heap, int index) {
   heap->data[index] = node;
 }
 
-void sift(heap_t * heap, int index) {
+void sift(heap_t *heap, int index) {
   void **data = heap->data;
   void *node = data[index];
 
@@ -74,6 +70,11 @@ void sift(heap_t * heap, int index) {
     index = min_child_index;
   }
   data[index] = node;
+}
+
+void heapify(heap_t *heap) {
+  for (int i = PARENT(heap->size - 1); i >= 0; i--)
+    sift(heap, i);
 }
 
 /***************************

@@ -29,7 +29,17 @@ void resize(heap_t *heap) {
 }
 
 void bubble(heap_t *heap, int index) {
+  void *node = heap->data[index];
 
+  while (index > 0) {
+    void *parent = heap->data[PARENT(index)];
+    if (heap->compare(node, parent) >= 0)
+      break;
+    heap->data[index] = parent;
+    index = PARENT(index);
+  }
+
+  heap->data[index] = node;
 }
 
 void sift(heap_t * heap, int index) {

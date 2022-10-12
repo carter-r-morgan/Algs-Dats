@@ -17,6 +17,9 @@ struct heap_t {
   comparator compare;
 };
 
+#define PARENT(i) ((i - 1) / BRANCH_FACTOR)
+#define CHILD(i, n) (i*BRANCH_FACTOR + 1 + n)
+
 void heapify(heap_t *heap) {
 
 }

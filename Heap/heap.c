@@ -59,7 +59,10 @@ heap_t *alloc_heap(comparator compare, void **data, int size) {
  * Free the given heap
  */
 void free_heap(heap_t *heap) {
-
+  for (int i = 0; i < heap->size; i++)
+    free(heap->data[i]);
+  free(heap->data);
+  free(heap);
 }
 
 /********************

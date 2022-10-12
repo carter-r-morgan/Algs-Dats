@@ -29,6 +29,10 @@ void bubble(heap_t *heap, int index) {
 
 }
 
+void sift(heap_t * heap, int index) {
+
+}
+
 /***************************
  * ALLOCATORS/DEALLOCATORS *
  ***************************/
@@ -81,13 +85,20 @@ void free_heap(heap_t *heap) {
  * Return a pointer to the smallest item in the heap w/o removing it.
  */
 void *peek_min(heap_t *heap) {
+  if (heap->size == 0) return NULL;
   return heap->data[0];
 }
 
 /*
  * Return a pointer to the smallest item in the heap and remove it.
  */
-void *pop_min(heap_t *heap);
+void *pop_min(heap_t *heap) {
+  if (heap->size == 0) return NULL;
+  void *min = heap->data[0];
+
+  heap->data[0] = heap->data[--heap->size];
+  sift(heap, 0);
+}
 
 /*
  * Add the given item to the heap.

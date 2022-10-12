@@ -43,7 +43,29 @@ void bubble(heap_t *heap, int index) {
 }
 
 void sift(heap_t * heap, int index) {
+  void **data = heap->data;
+  void *node = data[index];
 
+  while (CHILD(index, 0) < heap->size) {
+    int min_child_index = CHILD(index, 0);
+    void *min_child = data[min_child_index];
+    for (int i = 1; i < BRANCH_FACTOR; i++) {
+      int curr_child_index = CHILD(index, i);
+      if (curr_child_index >= heap->size)
+        break;
+      void *curr_child = data[curr_child_index];
+
+      if (heap->compare(curr_child, min_child) < 0) {
+        min_child_index = curr_child_index;
+        min_child = curr_child;
+      }
+    }
+    if (heap->compare(node, min_child) <= 0)
+      break;
+    data[index] = min_child;
+    index = min_child_index;
+  }
+  data[index] = node;
 }
 
 /***************************

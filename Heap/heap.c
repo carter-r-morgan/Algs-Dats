@@ -21,6 +21,14 @@ void heapify(heap_t *heap) {
 
 }
 
+void resize(heap_t *heap) {
+
+}
+
+void bubble(heap_t *heap, int index) {
+
+}
+
 /***************************
  * ALLOCATORS/DEALLOCATORS *
  ***************************/
@@ -82,4 +90,9 @@ void *pop_min(heap_t *heap);
 /*
  * Add the given item to the heap.
  */
-void push(heap_t *heap, const void *item);
+void push(heap_t *heap, void *item) {
+  if (heap->size >= heap->buffer_size) resize(heap);
+
+  heap->data[heap->size] = item;
+  bubble(heap, heap->size++);
+}

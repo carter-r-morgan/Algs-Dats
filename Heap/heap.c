@@ -133,6 +133,8 @@ void *pop_min(heap_t *heap) {
 
   heap->data[0] = heap->data[--heap->size];
   sift(heap, 0);
+
+  return min;
 }
 
 /*

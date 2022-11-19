@@ -36,7 +36,7 @@ typedef struct heap_t heap_t;
  *       is used to initialize the heap & the heap takes ownership over the
  *       buffer. If not null, the size of the buffer must also be given.
  *   - size: (optional) If an existing buffer is given, the size of that buffer.
- *       else, the size to initialize the heap with.
+ *       else, the size to initialize the heap with. Values <= 0 will be ignored.
  */
 heap_t *alloc_heap(comparator compare, void **data, int size);
 
